@@ -1,0 +1,20 @@
+{
+  "name": "hexlet/code",
+  "autoload": {
+    "psr-4": {
+      "Hexlet\\Code\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Mick Rubashkin",
+      "email": "mikhail.rubashkin@gmail.com"
+    }
+  ],
+  "bin": [
+    "bin/gendiff"
+  ],
+  "require": {
+    "docopt/docopt": "^1.0"
+  }
+}
