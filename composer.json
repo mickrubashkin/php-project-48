@@ -1,6 +1,12 @@
 {
   "name": "hexlet/code",
   "autoload": {
+    "files": [
+      "src/Parser.php",
+      "src/CalculateDiff.php",
+      "src/Stringify.php",
+      "src/Gendiff.php"
+    ],
     "psr-4": {
       "Hexlet\\Code\\": "src/"
     }
