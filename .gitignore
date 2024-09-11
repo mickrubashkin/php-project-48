@@ -1,1 +1,10 @@
 /vendor/
+logs
+build
+coverage
+*.swo
+*.swp
+*.cache
+.DS_Store
+*.DS_Store
+*/.DS_Store
