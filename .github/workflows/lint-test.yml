@@ -30,6 +30,7 @@ jobs:
         # Run Linter
         run: make lint
       - name: Run tests
+        run: make test
       # Publish code coverage on Code Climate
       # https://github.com/paambaati/codeclimate-action
       # NOTE: uncomment for using workflow
