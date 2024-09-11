@@ -4,4 +4,4 @@
 
 ### Dev tests and linter status:
 
-![CI Status](https://github.com/github/docs/actions/workflows/lint-test.yml/badge.svg)
+![CI Status](https://github.com/mickrubashkin/php-project-48/actions/workflows/lint-test.yml/badge.svg)
