@@ -2,7 +2,7 @@
 
 namespace Differ\Differ;
 
-use function Differ\Parser\parse;
+use function Differ\Parsers\parse;
 use function Differ\CalculateDiff\calcDiff;
 use function Differ\Stringify\stringify;
 
