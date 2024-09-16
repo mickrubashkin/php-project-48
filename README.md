@@ -10,4 +10,10 @@
 
 ### Examples
 
+Compare plain files
+
 [![asciicast](https://asciinema.org/a/ftvDZGRTNynAPGHj4rDD0RtaX.svg)](https://asciinema.org/a/ftvDZGRTNynAPGHj4rDD0RtaX)
+
+Compare nested
+
+[![asciicast](https://asciinema.org/a/oJ5NdopZk2bKOtmSwarhdnMed.svg)](https://asciinema.org/a/oJ5NdopZk2bKOtmSwarhdnMed)

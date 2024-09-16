@@ -6,7 +6,7 @@ use function Differ\Parsers\parse;
 use function Differ\CalculateDiff\calcDiff;
 use function Differ\Stringify\stringify;
 
-function genDiff($path1, $path2)
+function genDiff(string $path1, string $path2, string $format = 'stylish'): string
 {
     $realPath1 = realpath($path1);
     $realPath2 = realpath($path2);
@@ -19,7 +19,9 @@ function genDiff($path1, $path2)
     $coll2 = parse($realPath2);
 
     $diff = calcDiff($coll1, $coll2);
-    $strDiff = stringify($diff);
+    // print_r($diff);
+
+    $strDiff = stringify($diff, $format);
 
     return $strDiff;
 }
