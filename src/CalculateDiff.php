@@ -2,19 +2,7 @@
 
 namespace Differ\CalculateDiff;
 
-function isAssociativeArray($array)
-{
-    if (!is_array($array)) {
-        return false;
-    }
-
-    $keys = array_keys($array);
-    if ($keys !== range(0, count($array) - 1)) {
-        return true;
-    }
-
-    return false;
-}
+use function Differ\Functions\isAssociativeArray;
 
 function calcDiff(array $coll1, array $coll2): array
 {
@@ -31,7 +19,7 @@ function calcDiff(array $coll1, array $coll2): array
         } elseif (!array_key_exists($k, $coll2)) {
             $diff[] = [
                 'key' => $k,
-                'type' => 'deleted',
+                'type' => 'removed',
                 'value' => $v,
             ];
         } elseif (isAssociativeArray($v)) {
@@ -50,7 +38,7 @@ function calcDiff(array $coll1, array $coll2): array
         } else {
             $diff[$k] = [
                 'key' => $k,
-                'type' => 'modified',
+                'type' => 'updated',
                 'value' => [
                     'from' => $coll1[$k],
                     'to' => $coll2[$k]

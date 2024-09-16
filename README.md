@@ -10,10 +10,13 @@
 
 ### Examples
 
-Compare plain files
+Compare plain data with stylish formatter
 
 [![asciicast](https://asciinema.org/a/ftvDZGRTNynAPGHj4rDD0RtaX.svg)](https://asciinema.org/a/ftvDZGRTNynAPGHj4rDD0RtaX)
 
-Compare nested
+Compare nested data with stylish formatter
 
 [![asciicast](https://asciinema.org/a/oJ5NdopZk2bKOtmSwarhdnMed.svg)](https://asciinema.org/a/oJ5NdopZk2bKOtmSwarhdnMed)
+
+Compare nested data with plain formatter
+[![asciicast](https://asciinema.org/a/IH0OnrW9327HrJyFC2nxSC7IX.svg)](https://asciinema.org/a/IH0OnrW9327HrJyFC2nxSC7IX)

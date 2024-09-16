@@ -4,7 +4,7 @@ namespace Differ\Differ;
 
 use function Differ\Parsers\parse;
 use function Differ\CalculateDiff\calcDiff;
-use function Differ\Stringify\stringify;
+use function Differ\Formatters\getFormatter;
 
 function genDiff(string $path1, string $path2, string $format = 'stylish'): string
 {
@@ -19,9 +19,9 @@ function genDiff(string $path1, string $path2, string $format = 'stylish'): stri
     $coll2 = parse($realPath2);
 
     $diff = calcDiff($coll1, $coll2);
-    // print_r($diff);
 
-    $strDiff = stringify($diff, $format);
+    $formatter = getFormatter($format);
+    $strDiff = $formatter($diff);
 
     return $strDiff;
 }

@@ -4,8 +4,11 @@
     "files": [
       "src/Parsers.php",
       "src/CalculateDiff.php",
-      "src/Stringify.php",
-      "src/Gendiff.php"
+      "src/Differ.php",
+      "src/Formatters.php",
+      "src/Formatters/Stylish.php",
+      "src/Formatters/Plain.php",
+      "src/Functions.php"
     ],
     "psr-4": {
       "Hexlet\\Code\\": "src/"
