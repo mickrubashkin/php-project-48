@@ -4,9 +4,11 @@ namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parse(string|false $path)
+function parse(string $path)
 {
-    if ($path === false) {
+    $realPath = realpath($path);
+
+    if ($realPath === false) {
         echo 'File does not exists. Please check the pathes.' . PHP_EOL;
     }
 
