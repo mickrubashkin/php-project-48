@@ -29,19 +29,18 @@ function iter(mixed $data, $depth = 1): mixed
         $lines = $data;
     }
 
-        $separator = '    ';
-        $indent = str_repeat($separator, $depth);
-        $addedIndent = substr($indent, 0, -2) . '+ ';
-        $removedIndent = substr($indent, 0, -2) . '- ';
-        $bracketIndent = str_repeat($separator, $depth - 1);
+        $indentSize = $depth * 4;
+        $currentIndent = str_repeat(' ', $indentSize);
+        $addedIndent = substr($currentIndent, 0, -2) . '+ ';
+        $removedIndent = substr($currentIndent, 0, -2) . '- ';
+        $bracketIndent = str_repeat(' ', $indentSize - 4);
 
-
-        $formatted = array_map(function ($item) use ($depth, $addedIndent, $removedIndent, $indent) {
+        $formatted = array_map(function ($item) use ($depth, $addedIndent, $removedIndent, $currentIndent) {
             if (!array_key_exists('type', $item)) {
                 $k = key($item);
                 $v = $item[$k];
                 $value = iter($v, $depth + 1);
-                return "{$indent}{$k}: $value";
+                return "{$currentIndent}{$k}: $value";
             }
             if ($item['type'] === 'added') {
                 $key = $item['key'];
@@ -59,11 +58,11 @@ function iter(mixed $data, $depth = 1): mixed
             } if ($item['type'] === 'unchanged') {
                 $key = $item['key'];
                 $value = iter($item['value'], $depth + 1);
-                return "{$indent}{$key}: {$value}";
+                return "{$currentIndent}{$key}: {$value}";
             } if (array_key_exists('children', $item)) {
                 $key = $item['key'];
                 $inner = iter($item['children'], $depth + 1);
-                return "{$indent}{$key}: {$inner}";
+                return "{$currentIndent}{$key}: {$inner}";
             }
         }, $lines);
 

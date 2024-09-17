@@ -2,13 +2,14 @@
   "name": "hexlet/code",
   "autoload": {
     "files": [
-      "src/Parsers.php",
-      "src/CalculateDiff.php",
       "src/Differ.php",
+      "src/Parsers.php",
+      "src/Functions.php",
+      "src/CalculateDiff.php",
       "src/Formatters.php",
       "src/Formatters/Stylish.php",
       "src/Formatters/Plain.php",
-      "src/Functions.php"
+      "src/Formatters/Json.php"
     ],
     "psr-4": {
       "Hexlet\\Code\\": "src/"
