@@ -31,23 +31,18 @@ function iter(mixed $data, array $path): mixed
             }
 
             $fullPath = "'" . implode('.', [...$path, $item['key']]) . "'";
-            $value = $item['value'];
-            $from = '';
-            $to = '';
-            $result = '';
 
             if ($item['type'] === 'updated') {
+                $value = $item['value'];
                 $from = stringifyValue($value['from']);
                 $to = stringifyValue($value['to']);
-                $result = "Property $fullPath was updated. From $from to $to";
+                return "Property $fullPath was updated. From $from to $to";
             } elseif ($item['type'] === 'added') {
-                $value = stringifyValue($value);
-                $result = "Property $fullPath was added with value: $value";
+                $value = stringifyValue($item['value']);
+                return "Property $fullPath was added with value: $value";
             } elseif ($item['type'] === 'removed') {
-                $result = "Property $fullPath was removed";
+                return "Property $fullPath was removed";
             }
-
-            return $result;
         }, $filteredLines);
 
         return implode("\n", $formattedLines);
