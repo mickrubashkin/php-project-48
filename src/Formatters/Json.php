@@ -4,24 +4,23 @@ namespace Differ\Formatters\Json;
 
 function convertToAssoc(array $arr)
 {
-    $coll = [];
-    foreach ($arr as $item) {
-        $key = $item['key'];
-        $type = $item['type'];
+    $coll = array_reduce($arr, function ($acc, $item) {
+        ['key' => $key, 'type' => $type] = $item;
 
         if ($type === 'nested') {
             $children = $item['children'];
             $newChildren = convertToAssoc($children);
-            $coll[$key] = ['type' => $type, 'children' => $newChildren];
+            $acc[$key] = ['type' => $type, 'children' => $newChildren];
         } elseif ($type === 'updated') {
-            $from = $item['value']['from'];
-            $to = $item['value']['to'];
-            $coll[$key] = ['type' => $type, 'from' => $from, 'to' => $to];
+            ['from' => $from, 'to' => $to] = $item['value'];
+            $acc[$key] = ['type' => $type, 'from' => $from, 'to' => $to];
         } else {
             $value = $item['value'];
-            $coll[$key] = ['type' => $type, 'value' => $value];
+            $acc[$key] = ['type' => $type, 'value' => $value];
         }
-    }
+
+        return $acc;
+    }, []);
 
     return $coll;
 }

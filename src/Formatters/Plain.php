@@ -19,15 +19,9 @@ function stringifyValue(mixed $v)
 
 function iter(mixed $data, array $path): mixed
 {
-    $lines = [];
-
-    if (isAssociativeArray($data)) {
-        foreach ($data as $k => $v) {
-            $lines[] = [$k => $v];
-        }
-    } else {
-        $lines = $data;
-    }
+    $lines = isAssociativeArray($data)
+        ? array_map(fn($k, $v) => [$k => $v], array_keys($data), array_values($data))
+        : $data;
 
         $filteredLines = array_filter($lines, fn ($item) => $item['type'] !== 'unchanged');
 
