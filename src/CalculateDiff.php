@@ -3,10 +3,13 @@
 namespace Differ\CalculateDiff;
 
 use function Differ\Functions\isAssociativeArray;
+use function Functional\sort;
 
 function calcDiff(array $coll1, array $coll2): array
 {
     $mergedColl = array_merge($coll1, $coll2);
+    $sortedKeys = sort(array_keys($mergedColl), fn ($left, $right) => strcmp($left, $right));
+    $sortedValues = array_map(fn($key) => $mergedColl[$key], $sortedKeys);
 
     $diff = array_map(function ($k, $v) use ($coll1, $coll2) {
         if (!array_key_exists($k, $coll1)) {
@@ -21,9 +24,7 @@ function calcDiff(array $coll1, array $coll2): array
         } else {
             return ['key' => $k, 'type' => 'updated', 'value' => ['from' => $coll1[$k], 'to' => $coll2[$k]]];
         }
-    }, array_keys($mergedColl), array_values($mergedColl));
-
-    usort($diff, fn ($v1, $v2) => $v1['key'] <=> $v2['key']);
+    }, $sortedKeys, $sortedValues);
 
     return $diff;
 }

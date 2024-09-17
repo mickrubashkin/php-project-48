@@ -19,15 +19,9 @@ function iter(mixed $data, int $depth = 1): mixed
         return stringifyValue($data);
     }
 
-        $lines = [];
-
-    if (isAssociativeArray($data)) {
-        foreach ($data as $k => $v) {
-            $lines[] = [$k => $v];
-        }
-    } else {
-        $lines = $data;
-    }
+        $lines = isAssociativeArray($data)
+            ? array_map(fn($k, $v) => [$k => $v], array_keys($data), array_values($data))
+            : $data;
 
         $separator = '    ';
         $indent = str_repeat($separator, $depth);
