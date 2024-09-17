@@ -4,7 +4,7 @@ namespace Differ\Formatters\Plain;
 
 use function Differ\Functions\isAssociativeArray;
 
-function stringifyValue($v)
+function stringifyValue(mixed $v)
 {
     if (gettype($v) === 'integer' || gettype($v) === 'double') {
         return $v;
@@ -17,7 +17,7 @@ function stringifyValue($v)
     return json_encode($v);
 }
 
-function iter(mixed $data, $path): mixed
+function iter(mixed $data, array $path): mixed
 {
     $lines = [];
 

@@ -4,7 +4,7 @@ namespace Differ\Fromatters\Stylish;
 
 use function Differ\Functions\isAssociativeArray;
 
-function stringifyValue($v)
+function stringifyValue(mixed $v)
 {
     if (gettype($v) === 'string' || gettype($v) === 'integer' || gettype($v) === 'double') {
         return $v;
@@ -13,7 +13,7 @@ function stringifyValue($v)
     return json_encode($v);
 }
 
-function iter(mixed $data, $depth = 1): mixed
+function iter(mixed $data, int $depth = 1): mixed
 {
     if (gettype($data) !== 'array') {
         return stringifyValue($data);

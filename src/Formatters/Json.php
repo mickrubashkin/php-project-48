@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Json;
 
-function convertToAssoc($arr)
+function convertToAssoc(array $arr)
 {
     $coll = [];
     foreach ($arr as $item) {
